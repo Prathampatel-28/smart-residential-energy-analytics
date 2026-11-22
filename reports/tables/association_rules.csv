@@ -1,0 +1,233 @@
+Antecedent,Consequent,Support,Confidence,Lift
+Lights=On AND RH_out=Dry,Appliances=High,0.0322,0.4965,2.3147
+DayType=Weekday AND RH_out=Dry AND TimeOfDay=Evening,Appliances=High,0.0305,0.4736,2.2082
+DayType=Weekday AND Lights=On AND TimeOfDay=Evening,Appliances=High,0.0361,0.4654,2.1698
+Lights=On AND TimeOfDay=Evening,Appliances=High,0.0463,0.4472,2.0848
+Lights=Off AND TimeOfDay=Night AND Windspeed=Windy,Appliances=Low,0.0414,0.7702,2.0371
+Lights=Off AND T_out=Cold AND TimeOfDay=Night,Appliances=Low,0.0836,0.7657,2.025
+RH_out=Dry AND TimeOfDay=Evening,Appliances=High,0.0413,0.4324,2.0157
+Lights=On AND Windspeed=Windy,Appliances=High,0.0365,0.4319,2.0137
+TimeOfDay=Night AND Windspeed=Windy,Appliances=Low,0.0449,0.7573,2.0028
+Lights=On AND T_out=Mild,Appliances=High,0.0333,0.4247,1.98
+RH_out=Moderate AND T_out=Cold AND TimeOfDay=Night,Appliances=Low,0.0323,0.7477,1.9773
+T_out=Cold AND TimeOfDay=Night,Appliances=Low,0.0884,0.7419,1.9622
+Lights=Off AND RH_out=Humid AND TimeOfDay=Night,Appliances=Low,0.087,0.7353,1.9448
+DayType=Weekday AND T_out=Cold AND TimeOfDay=Night,Appliances=Low,0.0637,0.7338,1.9407
+RH_out=Humid AND T_out=Cold AND TimeOfDay=Night,Appliances=Low,0.0515,0.733,1.9387
+DayType=Weekday AND TimeOfDay=Night AND Windspeed=Windy,Appliances=Low,0.0314,0.7329,1.9382
+DayType=Weekend AND Lights=Off AND TimeOfDay=Night,Appliances=Low,0.0498,0.7263,1.921
+DayType=Weekend AND TimeOfDay=Night,Appliances=Low,0.0502,0.7244,1.9159
+RH_out=Humid AND TimeOfDay=Night,Appliances=Low,0.093,0.7183,1.8997
+T_out=Cold AND TimeOfDay=Night AND Windspeed=Calm,Appliances=Low,0.0488,0.7176,1.8978
+Lights=Off AND T_out=Mild AND TimeOfDay=Night,Appliances=Low,0.0527,0.708,1.8724
+Lights=Off AND TimeOfDay=Night,Appliances=Low,0.1649,0.7079,1.8723
+Lights=Off AND TimeOfDay=Night AND Windspeed=Breezy,Appliances=Low,0.0481,0.7061,1.8674
+DayType=Weekday AND RH_out=Humid AND TimeOfDay=Night,Appliances=Low,0.0668,0.7014,1.8551
+T_out=Mild AND TimeOfDay=Night,Appliances=Low,0.0541,0.7003,1.8522
+DayType=Weekday AND Lights=Off AND TimeOfDay=Night,Appliances=Low,0.1152,0.7002,1.852
+Lights=Off AND RH_out=Moderate AND TimeOfDay=Night,Appliances=Low,0.0652,0.7002,1.8519
+TimeOfDay=Night AND Windspeed=Breezy,Appliances=Low,0.049,0.6964,1.8418
+TimeOfDay=Night,Appliances=Low,0.1738,0.6953,1.8388
+DayType=Weekday AND T_out=Mild AND TimeOfDay=Night,Appliances=Low,0.038,0.6884,1.8207
+RH_out=Moderate AND TimeOfDay=Night,Appliances=Low,0.068,0.6884,1.8206
+DayType=Weekday AND RH_out=Moderate AND TimeOfDay=Night,Appliances=Low,0.0475,0.6862,1.8147
+DayType=Weekday AND TimeOfDay=Night,Appliances=Low,0.1235,0.6841,1.8092
+RH_out=Humid AND TimeOfDay=Night AND Windspeed=Calm,Appliances=Low,0.0523,0.6805,1.7997
+Lights=Off AND TimeOfDay=Night AND Windspeed=Calm,Appliances=Low,0.0754,0.6788,1.7953
+DayType=Weekday AND TimeOfDay=Night AND Windspeed=Breezy,Appliances=Low,0.0328,0.6698,1.7714
+DayType=Weekday AND TimeOfDay=Night AND Windspeed=Calm,Appliances=Low,0.0593,0.6684,1.7677
+TimeOfDay=Night AND Windspeed=Calm,Appliances=Low,0.0798,0.664,1.7561
+Lights=Off AND RH_out=Humid AND T_out=Cold,Appliances=Low,0.0826,0.6303,1.667
+DayType=Weekday AND Lights=Off AND T_out=Cold,Appliances=Low,0.1097,0.6046,1.599
+Lights=Off AND T_out=Cold AND Windspeed=Calm,Appliances=Low,0.0774,0.6013,1.5904
+Lights=Off AND T_out=Cold AND Windspeed=Breezy,Appliances=Low,0.0402,0.6012,1.59
+Lights=Off AND T_out=Cold,Appliances=Low,0.1492,0.5958,1.5757
+Lights=Off AND RH_out=Humid AND Windspeed=Windy,Appliances=Low,0.0311,0.5887,1.5569
+DayType=Weekday AND Lights=Off AND RH_out=Humid,Appliances=Low,0.1041,0.5867,1.5516
+T_out=Warm AND TimeOfDay=Night,Appliances=Low,0.0312,0.5839,1.5442
+Lights=Off AND RH_out=Humid AND Windspeed=Calm,Appliances=Low,0.0746,0.5811,1.5368
+Lights=Off AND RH_out=Humid,Appliances=Low,0.1457,0.5795,1.5326
+Lights=Off AND T_out=Cold AND Windspeed=Windy,Appliances=Low,0.0316,0.5762,1.5238
+DayType=Weekend AND Lights=Off AND T_out=Cold,Appliances=Low,0.0395,0.5727,1.5146
+Lights=Off AND RH_out=Humid AND Windspeed=Breezy,Appliances=Low,0.04,0.5697,1.5066
+Lights=Off AND RH_out=Moderate AND T_out=Cold,Appliances=Low,0.0508,0.5648,1.4938
+DayType=Weekend AND Lights=Off AND RH_out=Humid,Appliances=Low,0.0417,0.5622,1.487
+Lights=Off AND RH_out=Moderate AND Windspeed=Windy,Appliances=Low,0.0463,0.5614,1.4848
+Lights=Off AND RH_out=Humid AND T_out=Mild,Appliances=Low,0.0432,0.5525,1.4613
+RH_out=Humid AND T_out=Cold AND Windspeed=Calm,Appliances=Low,0.0567,0.551,1.4571
+DayType=Weekend AND Lights=Off AND TimeOfDay=Afternoon,Appliances=Medium,0.0306,0.5866,1.4398
+DayType=Weekday AND RH_out=Humid AND T_out=Cold,Appliances=Low,0.0654,0.5317,1.4062
+RH_out=Humid AND T_out=Cold,Appliances=Low,0.0912,0.5289,1.3989
+DayType=Weekday AND RH_out=Humid AND Windspeed=Calm,Appliances=Low,0.0635,0.5203,1.3762
+Lights=Off AND T_out=Cold AND TimeOfDay=Morning,Appliances=Low,0.038,0.5187,1.3718
+DayType=Weekend AND TimeOfDay=Afternoon,Appliances=Medium,0.0386,0.557,1.3673
+RH_out=Humid AND Windspeed=Calm,Appliances=Low,0.0822,0.5162,1.3653
+Lights=Off AND RH_out=Moderate AND Windspeed=Calm,Appliances=Low,0.0437,0.5125,1.3554
+DayType=Weekday AND T_out=Cold AND Windspeed=Calm,Appliances=Low,0.0662,0.5098,1.3482
+DayType=Weekday AND Lights=Off AND RH_out=Moderate,Appliances=Low,0.0926,0.5095,1.3474
+T_out=Cold AND Windspeed=Calm,Appliances=Low,0.0878,0.5081,1.3437
+DayType=Weekday AND Lights=Off AND Windspeed=Calm,Appliances=Low,0.1058,0.5073,1.3416
+DayType=Weekday AND RH_out=Humid,Appliances=Low,0.1179,0.5072,1.3414
+Lights=Off AND RH_out=Humid AND TimeOfDay=Morning,Appliances=Low,0.0414,0.5025,1.3289
+Lights=Off AND Windspeed=Calm,Appliances=Low,0.1389,0.5014,1.326
+Lights=Off AND RH_out=Moderate,Appliances=Low,0.1256,0.5007,1.3242
+DayType=Weekday AND T_out=Cold,Appliances=Low,0.1234,0.4992,1.3202
+Lights=Off AND T_out=Mild AND Windspeed=Calm,Appliances=Low,0.0366,0.4952,1.3097
+DayType=Weekend AND TimeOfDay=Evening,Appliances=Medium,0.0368,0.5314,1.3045
+DayType=Weekend AND RH_out=Dry,Appliances=Medium,0.0512,0.5313,1.3041
+DayType=Weekend AND Lights=Off AND RH_out=Dry,Appliances=Medium,0.0421,0.5303,1.3017
+T_out=Cold,Appliances=Low,0.1648,0.4917,1.3004
+RH_out=Humid,Appliances=Low,0.1618,0.4882,1.291
+T_out=Cold AND Windspeed=Windy,Appliances=Low,0.0344,0.4853,1.2836
+Lights=Off AND RH_out=Moderate AND T_out=Mild,Appliances=Low,0.0473,0.4849,1.2825
+DayType=Weekend AND Lights=Off AND Windspeed=Calm,Appliances=Low,0.0331,0.4833,1.2783
+T_out=Warm AND Windspeed=Breezy,Appliances=Medium,0.0635,0.5193,1.2746
+Lights=Off AND T_out=Warm AND Windspeed=Breezy,Appliances=Medium,0.0525,0.5183,1.2721
+RH_out=Dry AND T_out=Warm AND Windspeed=Breezy,Appliances=Medium,0.0418,0.5166,1.268
+DayType=Weekend AND Lights=Off AND RH_out=Moderate,Appliances=Low,0.033,0.4776,1.2632
+DayType=Weekday AND RH_out=Humid AND T_out=Mild,Appliances=Low,0.0343,0.4754,1.2574
+Lights=On AND Windspeed=Calm,Appliances=Medium,0.0373,0.5111,1.2546
+DayType=Weekday AND Lights=On AND Windspeed=Calm,Appliances=Medium,0.0321,0.5101,1.252
+Lights=Off AND TimeOfDay=Morning AND Windspeed=Calm,Appliances=Low,0.0359,0.4727,1.2501
+RH_out=Dry AND T_out=Warm AND TimeOfDay=Afternoon,Appliances=Medium,0.0535,0.5075,1.2456
+Lights=Off AND T_out=Warm AND TimeOfDay=Afternoon,Appliances=Medium,0.0534,0.5072,1.245
+DayType=Weekend AND T_out=Cold,Appliances=Low,0.0413,0.4706,1.2446
+DayType=Weekend AND T_out=Warm,Appliances=Medium,0.0457,0.5059,1.2418
+DayType=Weekday AND Lights=Off AND T_out=Mild,Appliances=Low,0.0819,0.4685,1.2392
+DayType=Weekend AND Lights=Off AND T_out=Warm,Appliances=Medium,0.0374,0.5041,1.2374
+DayType=Weekday AND T_out=Warm AND Windspeed=Breezy,Appliances=Medium,0.0467,0.5035,1.236
+DayType=Weekday AND T_out=Warm AND Windspeed=Calm,Appliances=Medium,0.0353,0.5032,1.2353
+T_out=Cold AND Windspeed=Breezy,Appliances=Low,0.0426,0.4656,1.2315
+DayType=Weekday AND Lights=Off,Appliances=Low,0.2561,0.4655,1.231
+RH_out=Humid AND Windspeed=Windy,Appliances=Low,0.0374,0.465,1.2299
+T_out=Warm AND Windspeed=Calm,Appliances=Medium,0.0423,0.5009,1.2295
+DayType=Weekday AND Lights=Off AND Windspeed=Windy,Appliances=Low,0.0755,0.4607,1.2185
+DayType=Weekday AND RH_out=Moderate AND T_out=Cold,Appliances=Low,0.044,0.4607,1.2185
+RH_out=Humid AND Windspeed=Breezy,Appliances=Low,0.0423,0.4598,1.2159
+DayType=Weekday AND Lights=On AND RH_out=Moderate,Appliances=Medium,0.0345,0.4953,1.2157
+T_out=Warm AND TimeOfDay=Afternoon,Appliances=Medium,0.0621,0.4942,1.213
+Lights=Off AND T_out=Warm AND Windspeed=Calm,Appliances=Medium,0.0367,0.4939,1.2122
+Lights=On AND RH_out=Moderate,Appliances=Medium,0.0406,0.4938,1.2122
+RH_out=Moderate AND Windspeed=Windy,Appliances=Low,0.0511,0.458,1.2112
+Lights=Off AND RH_out=Dry AND T_out=Warm,Appliances=Medium,0.0801,0.4925,1.2089
+Lights=Off AND TimeOfDay=Afternoon AND Windspeed=Breezy,Appliances=Medium,0.0347,0.4925,1.2088
+RH_out=Moderate AND T_out=Cold,Appliances=Low,0.0565,0.4568,1.2082
+RH_out=Dry AND TimeOfDay=Afternoon AND Windspeed=Breezy,Appliances=Medium,0.031,0.4912,1.2056
+T_out=Cold AND TimeOfDay=Morning,Appliances=Low,0.0445,0.4554,1.2044
+RH_out=Dry AND T_out=Warm,Appliances=Medium,0.0949,0.4885,1.1991
+DayType=Weekday AND RH_out=Moderate AND Windspeed=Windy,Appliances=Low,0.0396,0.4528,1.1974
+Lights=Off AND RH_out=Dry AND Windspeed=Breezy,Appliances=Medium,0.0483,0.487,1.1953
+RH_out=Humid AND T_out=Mild,Appliances=Low,0.0469,0.4512,1.1934
+TimeOfDay=Afternoon AND Windspeed=Breezy,Appliances=Medium,0.0424,0.4847,1.1896
+DayType=Weekday AND T_out=Cold AND TimeOfDay=Morning,Appliances=Low,0.0323,0.4471,1.1824
+Lights=Off,Appliances=Low,0.3446,0.4459,1.1793
+DayType=Weekday AND Lights=Off AND TimeOfDay=Morning,Appliances=Low,0.0597,0.4457,1.1788
+Lights=Off AND T_out=Mild,Appliances=Low,0.113,0.4449,1.1766
+RH_out=Moderate AND TimeOfDay=Evening,Appliances=Medium,0.0434,0.4782,1.1738
+Lights=Off AND RH_out=Moderate AND TimeOfDay=Morning,Appliances=Low,0.0318,0.4438,1.1738
+DayType=Weekend AND RH_out=Humid,Appliances=Low,0.044,0.4435,1.173
+Lights=On AND Windspeed=Breezy,Appliances=Medium,0.0333,0.4775,1.172
+RH_out=Dry AND Windspeed=Breezy,Appliances=Medium,0.0587,0.477,1.1707
+Lights=Off AND T_out=Mild AND Windspeed=Windy,Appliances=Low,0.0424,0.4423,1.1698
+Lights=On AND T_out=Cold,Appliances=Medium,0.0403,0.4764,1.1693
+Lights=On AND TimeOfDay=Evening,Appliances=Medium,0.0492,0.4746,1.1649
+Lights=Off AND RH_out=Dry AND TimeOfDay=Afternoon,Appliances=Medium,0.0696,0.4743,1.1641
+T_out=Warm AND TimeOfDay=Evening,Appliances=Medium,0.043,0.4735,1.1623
+Lights=Off AND TimeOfDay=Morning,Appliances=Low,0.0846,0.4393,1.1619
+RH_out=Humid AND TimeOfDay=Morning,Appliances=Low,0.0476,0.4388,1.1606
+DayType=Weekday AND T_out=Mild AND Windspeed=Calm,Appliances=Low,0.0313,0.4383,1.1592
+DayType=Weekday AND Windspeed=Calm,Appliances=Low,0.1189,0.4381,1.1587
+Windspeed=Calm,Appliances=Low,0.1533,0.4381,1.1587
+DayType=Weekend AND Windspeed=Calm,Appliances=Low,0.0344,0.4381,1.1586
+TimeOfDay=Evening AND Windspeed=Calm,Appliances=Medium,0.0429,0.4716,1.1576
+DayType=Weekday AND RH_out=Dry AND T_out=Warm,Appliances=Medium,0.0656,0.4711,1.1563
+TimeOfDay=Evening AND Windspeed=Breezy,Appliances=Medium,0.0405,0.4706,1.155
+Lights=On AND T_out=Warm,Appliances=Medium,0.0301,0.4696,1.1526
+T_out=Warm,Appliances=Medium,0.1559,0.4691,1.1515
+DayType=Weekday AND RH_out=Moderate AND TimeOfDay=Evening,Appliances=Medium,0.0342,0.469,1.1513
+Lights=Off AND T_out=Warm,Appliances=Medium,0.1258,0.469,1.1513
+DayType=Weekday AND T_out=Warm AND TimeOfDay=Afternoon,Appliances=Medium,0.0429,0.4684,1.1498
+Lights=On AND RH_out=Humid,Appliances=Medium,0.0374,0.4677,1.1481
+RH_out=Dry AND TimeOfDay=Afternoon,Appliances=Medium,0.0806,0.4675,1.1475
+Lights=Off AND TimeOfDay=Afternoon,Appliances=Medium,0.0939,0.4675,1.1475
+DayType=Weekday AND Lights=On AND T_out=Cold,Appliances=Medium,0.0308,0.4673,1.147
+RH_out=Moderate AND T_out=Warm,Appliances=Medium,0.0387,0.4667,1.1456
+Lights=On,Appliances=Medium,0.106,0.4667,1.1454
+DayType=Weekday AND TimeOfDay=Evening AND Windspeed=Calm,Appliances=Medium,0.0338,0.4658,1.1434
+Lights=Off AND T_out=Mild AND TimeOfDay=Morning,Appliances=Low,0.0301,0.4323,1.1434
+DayType=Weekday AND Lights=On,Appliances=Medium,0.0802,0.4652,1.1418
+TimeOfDay=Morning AND Windspeed=Calm,Appliances=Low,0.0404,0.4314,1.1408
+DayType=Weekday AND RH_out=Humid AND TimeOfDay=Morning,Appliances=Low,0.0335,0.4313,1.1406
+DayType=Weekday AND RH_out=Moderate AND T_out=Warm,Appliances=Medium,0.0303,0.4625,1.1352
+Lights=Off AND Windspeed=Windy,Appliances=Low,0.1043,0.4286,1.1335
+Lights=Off AND RH_out=Moderate AND Windspeed=Breezy,Appliances=Low,0.0356,0.4284,1.133
+DayType=Weekday AND TimeOfDay=Morning AND Windspeed=Calm,Appliances=Low,0.0309,0.4284,1.1329
+T_out=Mild AND TimeOfDay=Evening,Appliances=Medium,0.0356,0.4609,1.1314
+RH_out=Moderate AND Windspeed=Calm,Appliances=Low,0.0489,0.4276,1.1309
+Lights=Off AND RH_out=Dry,Appliances=Medium,0.1244,0.4599,1.1289
+TimeOfDay=Afternoon,Appliances=Medium,0.115,0.4595,1.1279
+DayType=Weekend AND Windspeed=Breezy,Appliances=Medium,0.0431,0.4573,1.1224
+T_out=Mild AND Windspeed=Calm,Appliances=Low,0.0394,0.4244,1.1223
+TimeOfDay=Evening,Appliances=Medium,0.1142,0.4567,1.1211
+DayType=Weekday AND Lights=On AND TimeOfDay=Evening,Appliances=Medium,0.0354,0.4556,1.1183
+DayType=Weekday AND Lights=Off AND T_out=Warm,Appliances=Medium,0.0884,0.4556,1.1183
+DayType=Weekday AND T_out=Warm,Appliances=Medium,0.1102,0.4554,1.1178
+RH_out=Dry,Appliances=Medium,0.1523,0.4543,1.1151
+DayType=Weekend AND Lights=Off AND Windspeed=Breezy,Appliances=Medium,0.0339,0.4542,1.1148
+Lights=On AND T_out=Mild,Appliances=Medium,0.0356,0.4538,1.1139
+DayType=Weekday AND Lights=Off AND Windspeed=Breezy,Appliances=Low,0.0748,0.4208,1.1129
+TimeOfDay=Morning AND Windspeed=Breezy,Appliances=Medium,0.0355,0.4534,1.1128
+RH_out=Dry AND Windspeed=Calm,Appliances=Medium,0.0345,0.4522,1.1099
+DayType=Weekend AND RH_out=Moderate,Appliances=Low,0.0343,0.4188,1.1077
+RH_out=Dry AND TimeOfDay=Afternoon AND Windspeed=Windy,Appliances=Medium,0.0336,0.4508,1.1065
+DayType=Weekday AND RH_out=Moderate AND Windspeed=Calm,Appliances=Low,0.0362,0.4158,1.0998
+RH_out=Moderate,Appliances=Low,0.1383,0.4151,1.0977
+Lights=Off AND RH_out=Dry AND T_out=Mild,Appliances=Medium,0.035,0.4467,1.0964
+DayType=Weekday AND RH_out=Dry AND Windspeed=Breezy,Appliances=Medium,0.0418,0.4466,1.0963
+DayType=Weekday AND RH_out=Moderate,Appliances=Low,0.104,0.4138,1.0945
+RH_out=Dry AND T_out=Warm AND Windspeed=Windy,Appliances=Medium,0.031,0.4444,1.0907
+Lights=Off AND TimeOfDay=Evening,Appliances=Medium,0.065,0.4441,1.0901
+RH_out=Moderate AND Windspeed=Breezy,Appliances=Medium,0.0475,0.443,1.0875
+Lights=Off AND TimeOfDay=Afternoon AND Windspeed=Windy,Appliances=Medium,0.0402,0.443,1.0874
+DayType=Weekday AND RH_out=Moderate AND TimeOfDay=Morning,Appliances=Medium,0.0309,0.4419,1.0848
+RH_out=Moderate AND T_out=Mild,Appliances=Low,0.0513,0.406,1.0738
+Lights=Off AND RH_out=Dry AND Windspeed=Windy,Appliances=Medium,0.0472,0.4369,1.0724
+RH_out=Dry AND TimeOfDay=Evening,Appliances=Medium,0.0417,0.4366,1.0717
+TimeOfDay=Afternoon AND Windspeed=Windy,Appliances=Medium,0.0513,0.4363,1.0708
+RH_out=Dry AND Windspeed=Windy,Appliances=Medium,0.0591,0.4349,1.0675
+Lights=Off AND T_out=Mild AND Windspeed=Breezy,Appliances=Low,0.0341,0.4036,1.0674
+DayType=Weekday AND RH_out=Moderate AND Windspeed=Breezy,Appliances=Medium,0.0334,0.4345,1.0665
+T_out=Cold AND TimeOfDay=Evening,Appliances=Medium,0.0356,0.4341,1.0656
+DayType=Weekday AND RH_out=Moderate AND Windspeed=Calm,Appliances=Medium,0.0378,0.4339,1.065
+DayType=Weekday AND RH_out=Dry AND TimeOfDay=Afternoon,Appliances=Medium,0.0543,0.433,1.0627
+Lights=Off AND Windspeed=Breezy,Appliances=Low,0.1014,0.4018,1.0626
+Windspeed=Breezy,Appliances=Medium,0.1394,0.4328,1.0623
+DayType=Weekend,Appliances=Medium,0.12,0.4327,1.0622
+RH_out=Dry AND T_out=Mild,Appliances=Medium,0.0442,0.4323,1.0612
+DayType=Weekend AND Windspeed=Windy,Appliances=Medium,0.0451,0.4323,1.0612
+DayType=Weekday AND Lights=Off AND RH_out=Dry,Appliances=Medium,0.0823,0.4307,1.0571
+DayType=Weekday AND TimeOfDay=Morning,Appliances=Medium,0.0777,0.4301,1.0558
+DayType=Weekday AND TimeOfDay=Morning AND Windspeed=Calm,Appliances=Medium,0.031,0.4298,1.0549
+T_out=Mild AND TimeOfDay=Afternoon,Appliances=Medium,0.0379,0.4293,1.0538
+DayType=Weekday AND TimeOfDay=Evening,Appliances=Medium,0.0773,0.4281,1.0507
+DayType=Weekday AND Lights=Off AND TimeOfDay=Afternoon,Appliances=Medium,0.0634,0.4258,1.0452
+DayType=Weekend AND Lights=Off AND Windspeed=Windy,Appliances=Medium,0.0338,0.4254,1.0441
+DayType=Weekend AND Lights=Off,Appliances=Medium,0.0942,0.4233,1.039
+DayType=Weekday AND RH_out=Dry,Appliances=Medium,0.1011,0.4232,1.0389
+RH_out=Moderate AND Windspeed=Calm,Appliances=Medium,0.0484,0.4232,1.0388
+DayType=Weekday AND Windspeed=Breezy,Appliances=Medium,0.0963,0.4226,1.0374
+DayType=Weekday AND TimeOfDay=Afternoon,Appliances=Medium,0.0764,0.4221,1.0362
+TimeOfDay=Evening AND Windspeed=Windy,Appliances=Medium,0.0308,0.4218,1.0354
+RH_out=Moderate AND TimeOfDay=Morning,Appliances=Medium,0.0402,0.4208,1.0328
+Lights=Off AND Windspeed=Breezy,Appliances=Medium,0.1062,0.4204,1.032
+Lights=On AND Windspeed=Windy,Appliances=Medium,0.0354,0.4193,1.0293
+Lights=Off AND RH_out=Moderate AND Windspeed=Breezy,Appliances=Medium,0.0348,0.4186,1.0276
+TimeOfDay=Morning AND Windspeed=Calm,Appliances=Medium,0.039,0.4162,1.0216
+T_out=Mild AND TimeOfDay=Morning,Appliances=Medium,0.0373,0.4154,1.0198
+TimeOfDay=Morning,Appliances=Medium,0.1031,0.4126,1.0128
+DayType=Weekend AND Lights=Off AND T_out=Mild,Appliances=Medium,0.0327,0.4119,1.011
+DayType=Weekday AND RH_out=Humid AND TimeOfDay=Morning,Appliances=Medium,0.032,0.4117,1.0106
+DayType=Weekday AND RH_out=Moderate AND T_out=Mild,Appliances=Medium,0.0372,0.4114,1.0099
+DayType=Weekday AND Windspeed=Calm,Appliances=Medium,0.1114,0.4103,1.0071
+DayType=Weekend AND T_out=Mild,Appliances=Medium,0.0406,0.4097,1.0057
+Windspeed=Calm,Appliances=Medium,0.1431,0.4089,1.0036

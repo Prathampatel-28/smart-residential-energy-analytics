@@ -1,0 +1,406 @@
+"""
+Smart Residential Energy Consumption Analytics Dashboard
+=========================================================
+Interactive multi-page Streamlit application mirroring Chapter 13 of the
+academic project report: SMART_RESIDENTIAL_ENERGY_CONSUMPTION_PROJECT_REPORT.docx.
+
+Architecture (4 Main Report Pages + Academic About/Limitations):
+1. Page 1: Energy Consumption Overview (Chapter 13.2)
+   - KPI metrics: Mean Wh, Max Wh, Total kWh, % High Consumption.
+   - Visuals: Binned frequency distribution, Monthly average consumption.
+   - Slicers: Month, Day type (Weekday / Weekend).
+2. Page 2: Time-Based Consumption Analysis (Chapter 13.3)
+   - Visuals: 24-hour diurnal profile, daily time-series trend, day-of-week bars,
+     Hour x Weekday interactive heat map matrix.
+   - Slicers: Hour range, Weekday selector.
+3. Page 3: Environmental Analysis (Chapter 13.4)
+   - Visuals: Outdoor temperature vs energy scatter, outdoor humidity scatter,
+     climatic band aggregations, indoor vs outdoor thermal gradient over time.
+   - Slicers: Temperature band, Humidity band.
+4. Page 4: Correlation and Insights (Chapter 13.5)
+   - Visuals: Sensor correlation matrix, top predictor rankings, model performance
+     summary (Linear, Regression Tree, Classification Tree), plain-language viva insights.
+5. Tab 5: About, Methodology & Limitations (Chapter 16)
+   - Data provenance, Star schema Kimball design, and honest scientific discussion of R².
+
+Author: Senior Data Scientist for B.Tech/BCA Project
+"""
+
+import sys
+from pathlib import Path
+import pandas as pd
+import numpy as np
+import plotly.express as px
+import plotly.graph_objects as go
+import streamlit as st
+
+# Configure page
+st.set_page_config(
+    page_title="Smart Home Energy Analytics",
+    page_icon="⚡",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_PROCESSED = BASE_DIR / "data" / "processed" / "energy_cleaned.csv"
+POWERBI_DIR = BASE_DIR / "data" / "processed" / "powerbi"
+TAB_DIR = BASE_DIR / "reports" / "tables"
+
+
+@st.cache_data
+def load_data():
+    """Loads cleaned processed dataset."""
+    if not DATA_PROCESSED.exists():
+        return None
+    df = pd.read_csv(DATA_PROCESSED)
+    df["date"] = pd.to_datetime(df["date"])
+    return df
+
+
+@st.cache_data
+def load_table(name: str):
+    """Loads a precomputed summary table from reports/tables/."""
+    path = TAB_DIR / name
+    if path.exists():
+        return pd.read_csv(path)
+    return None
+
+
+df = load_data()
+
+# Custom CSS styling for an academic dashboard
+st.markdown("""
+<style>
+    .main-title { font-size: 28px; font-weight: 700; color: #1E293B; margin-bottom: 2px; }
+    .sub-title { font-size: 15px; color: #64748B; margin-bottom: 20px; }
+    .kpi-card { background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 14px; text-align: center; }
+    .kpi-val { font-size: 26px; font-weight: 700; color: #0F172A; }
+    .kpi-lbl { font-size: 12px; font-weight: 500; color: #64748B; text-transform: uppercase; }
+    .info-box { background-color: #F1F5F9; border-left: 4px solid #3B82F6; padding: 12px; border-radius: 4px; margin-top: 10px; }
+</style>
+""", unsafe_allow_html=True)
+
+st.sidebar.image("https://img.icons8.com/fluency/96/smart-home-shield.png", width=64)
+st.sidebar.title("Navigation")
+page = st.sidebar.radio(
+    "Select Report Page:",
+    [
+        "Page 1: Energy Overview",
+        "Page 2: Time-Based Analysis",
+        "Page 3: Environmental Analysis",
+        "Page 4: Correlation & Insights",
+        "About & Limitations"
+    ]
+)
+
+if df is None:
+    st.error("Processed data file not found! Please run `python run_all.py` first to generate analytical artifacts.")
+    st.stop()
+
+
+# ==============================================================================
+# PAGE 1: ENERGY CONSUMPTION OVERVIEW (Chapter 13.2)
+# ==============================================================================
+if page == "Page 1: Energy Overview":
+    st.markdown('<div class="main-title">⚡ Page 1: Energy Consumption Overview</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sub-title">High-level KPIs, appliance consumption distribution, and seasonal monthly trends</div>', unsafe_allow_html=True)
+
+    # Sidebar Slicers
+    st.sidebar.markdown("### Filters (Slicers)")
+    months = ["All Months"] + list(df["month_name"].unique())
+    sel_month = st.sidebar.selectbox("Filter by Month:", months)
+
+    day_options = ["All Days", "Weekday Only", "Weekend Only"]
+    sel_day_type = st.sidebar.selectbox("Filter by Day Type:", day_options)
+
+    # Filter data
+    filtered_df = df.copy()
+    if sel_month != "All Months":
+        filtered_df = filtered_df[filtered_df["month_name"] == sel_month]
+    if sel_day_type == "Weekday Only":
+        filtered_df = filtered_df[filtered_df["is_weekend"] == 0]
+    elif sel_day_type == "Weekend Only":
+        filtered_df = filtered_df[filtered_df["is_weekend"] == 1]
+
+    # DAX-equivalent KPIs (Chapter 13.6)
+    avg_appl = filtered_df["Appliances"].mean()
+    max_appl = filtered_df["Appliances"].max()
+    tot_kwh = (filtered_df["Appliances"] * (10.0 / 60.0)).sum() / 1000.0
+    high_pct = (filtered_df["Appliances"] > 100).mean() * 100.0
+
+    kpi1, kpi2, kpi3, kpi4 = st.columns(4)
+    with kpi1:
+        st.markdown(f'<div class="kpi-card"><div class="kpi-val">{avg_appl:.1f} <span style="font-size:16px;">Wh</span></div><div class="kpi-lbl">Avg Consumption</div></div>', unsafe_allow_html=True)
+    with kpi2:
+        st.markdown(f'<div class="kpi-card"><div class="kpi-val">{max_appl:.0f} <span style="font-size:16px;">Wh</span></div><div class="kpi-lbl">Peak Interval Demand</div></div>', unsafe_allow_html=True)
+    with kpi3:
+        st.markdown(f'<div class="kpi-card"><div class="kpi-val">{tot_kwh:.1f} <span style="font-size:16px;">kWh</span></div><div class="kpi-lbl">Total Electricity Consumed</div></div>', unsafe_allow_html=True)
+    with kpi4:
+        st.markdown(f'<div class="kpi-card"><div class="kpi-val">{high_pct:.1f}%</div><div class="kpi-lbl">High Consumption Intervals (&gt;100 Wh)</div></div>', unsafe_allow_html=True)
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    col_left, col_right = st.columns([1, 1])
+
+    with col_left:
+        st.markdown("##### Appliances Frequency Distribution (Histogram)")
+        show_log = st.checkbox("View log(1 + Appliances) transformed scale", value=False)
+        if show_log:
+            fig_hist = px.histogram(
+                filtered_df, x="log_Appliances", nbins=50,
+                title="Binned Distribution: log(1 + Appliances Wh) [Skewness: 1.19]",
+                color_discrete_sequence=["#475569"]
+            )
+            fig_hist.update_layout(xaxis_title="log(1 + Wh)", yaxis_title="Count", height=340)
+        else:
+            fig_hist = px.histogram(
+                filtered_df, x="Appliances", nbins=60,
+                title="Binned Distribution: Appliances Wh [Skewness: 3.39]",
+                color_discrete_sequence=["#334155"]
+            )
+            fig_hist.add_vline(x=avg_appl, line_dash="dash", line_color="#EF4444", annotation_text=f"Mean: {avg_appl:.1f}")
+            fig_hist.add_vline(x=filtered_df["Appliances"].median(), line_dash="dot", line_color="#10B981", annotation_text=f"Median: {filtered_df['Appliances'].median():.1f}")
+            fig_hist.update_layout(xaxis_title="Energy per 10-min interval (Wh)", yaxis_title="Count", height=340)
+        st.plotly_chart(fig_hist, use_container_width=True)
+
+    with col_right:
+        st.markdown("##### Monthly Mean Consumption (OLAP Roll-up)")
+        mon_order = ["January", "February", "March", "April", "May"]
+        mon_summary = df.groupby(["month", "month_name"])["Appliances"].agg(["mean", "count"]).reset_index()
+        mon_summary = mon_summary.sort_values("month")
+
+        fig_mon = px.bar(
+            mon_summary, x="month_name", y="mean", text_auto=".2f",
+            title="Average Appliance Consumption by Month (Wh) [Table 17]",
+            color_discrete_sequence=["#64748B"]
+        )
+        fig_mon.update_layout(xaxis_title="Month (2016)", yaxis_title="Mean Consumption (Wh)", height=340)
+        fig_mon.update_traces(textposition="outside")
+        st.plotly_chart(fig_mon, use_container_width=True)
+
+    # Summary table from warehouse
+    st.markdown("##### Star Schema Fact & Dimension Summary (Chapter 6)")
+    st.dataframe(
+        mon_summary.rename(columns={"month_name": "Month", "mean": "Mean Appliances (Wh)", "count": "Record Count"}),
+        use_container_width=True, hide_index=True
+    )
+
+
+# ==============================================================================
+# PAGE 2: TIME-BASED CONSUMPTION ANALYSIS (Chapter 13.3)
+# ==============================================================================
+elif page == "Page 2: Time-Based Analysis":
+    st.markdown('<div class="main-title">🕒 Page 2: Time-Based Consumption Analysis</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sub-title">Diurnal curves, weekday variations, 24-hour heatmaps, and continuous time trends</div>', unsafe_allow_html=True)
+
+    # Slicers
+    st.sidebar.markdown("### Filters (Slicers)")
+    hr_range = st.sidebar.slider("Select Hour Range:", 0, 23, (0, 23))
+    dow_list = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    sel_dow = st.sidebar.multiselect("Filter by Day of Week:", dow_list, default=dow_list)
+
+    filtered_time = df[(df["hour"] >= hr_range[0]) & (df["hour"] <= hr_range[1]) & (df["day_name"].isin(sel_dow))]
+
+    col_t1, col_t2 = st.columns(2)
+    with col_t1:
+        st.markdown("##### Diurnal Hourly Profile (Mean vs Median)")
+        hourly_df = filtered_time.groupby("hour")["Appliances"].agg(["mean", "median"]).reset_index()
+        fig_hr = go.Figure()
+        fig_hr.add_trace(go.Scatter(x=hourly_df["hour"], y=hourly_df["mean"], mode="lines+markers", name="Mean Wh", line=dict(color="#1E293B", width=2.2)))
+        fig_hr.add_trace(go.Scatter(x=hourly_df["hour"], y=hourly_df["median"], mode="lines+markers", name="Median Wh", line=dict(color="#94A3B8", dash="dash")))
+        fig_hr.update_layout(
+            title="Hourly Appliance Energy Profile [Table 18]",
+            xaxis=dict(title="Hour of Day (0 - 23)", tickmode="linear", dtick=2),
+            yaxis_title="Energy (Wh)", height=320, legend=dict(x=0.02, y=0.95)
+        )
+        st.plotly_chart(fig_hr, use_container_width=True)
+
+    with col_t2:
+        st.markdown("##### Day of Week Variation")
+        dow_df = filtered_time.groupby("day_name")["Appliances"].mean().reindex(dow_list).reset_index()
+        fig_dow = px.bar(
+            dow_df, x="day_name", y="Appliances", text_auto=".1f",
+            title="Mean Consumption by Day of Week",
+            color_discrete_sequence=["#475569"]
+        )
+        fig_dow.update_layout(xaxis_title="Day of Week", yaxis_title="Mean Appliances (Wh)", height=320)
+        fig_dow.update_traces(textposition="outside")
+        st.plotly_chart(fig_dow, use_container_width=True)
+
+    st.markdown("##### Continuous Daily Energy Trend (Jan 11 – May 27, 2016)")
+    daily_df = filtered_time.set_index("date")["Appliances"].resample("D").mean().reset_index()
+    fig_daily = px.line(
+        daily_df, x="date", y="Appliances",
+        title="Daily Mean Appliance Consumption over Time",
+        color_discrete_sequence=["#0F172A"]
+    )
+    fig_daily.add_hline(y=df["Appliances"].mean(), line_dash="dash", line_color="#EF4444", annotation_text="Overall Mean (97.7 Wh)")
+    fig_daily.update_layout(xaxis_title="Date", yaxis_title="Daily Mean Wh", height=280)
+    st.plotly_chart(fig_daily, use_container_width=True)
+
+    st.markdown("##### 24-Hour × 7-Day Matrix Heat Map (Chapter 13.3)")
+    pivot_matrix = filtered_time.pivot_table(index="day_name", columns="hour", values="Appliances", aggfunc="mean").reindex(dow_list)
+    fig_heat = px.imshow(
+        pivot_matrix, labels=dict(x="Hour of Day", y="Day of Week", color="Mean Wh"),
+        color_continuous_scale="Greys", aspect="auto"
+    )
+    fig_heat.update_layout(height=300)
+    st.plotly_chart(fig_heat, use_container_width=True)
+
+
+# ==============================================================================
+# PAGE 3: ENVIRONMENTAL ANALYSIS (Chapter 13.4)
+# ==============================================================================
+elif page == "Page 3: Environmental Analysis":
+    st.markdown('<div class="main-title">🌡️ Page 3: Environmental Analysis</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sub-title">Outdoor climate, indoor thermal gradients, and weather band aggregations</div>', unsafe_allow_html=True)
+
+    # Slicers
+    st.sidebar.markdown("### Filters (Slicers)")
+    t_out_q = df["T_out"].quantile([1/3, 2/3]).values
+    temp_bands = ["All Bands", "Cold", "Mild", "Warm"]
+    sel_temp_band = st.sidebar.selectbox("Filter Outdoor Temperature Band:", temp_bands)
+
+    humidity_bands = ["All Bands", "Dry", "Moderate", "Humid"]
+    sel_hum_band = st.sidebar.selectbox("Filter Outdoor Humidity Band:", humidity_bands)
+
+    filtered_env = df.copy()
+    if sel_temp_band != "All Bands":
+        filtered_env["T_band"] = pd.cut(filtered_env["T_out"], [-np.inf, *t_out_q, np.inf], labels=["Cold", "Mild", "Warm"]).astype(str)
+        filtered_env = filtered_env[filtered_env["T_band"] == sel_temp_band]
+    if sel_hum_band != "All Bands":
+        rh_q = df["RH_out"].quantile([1/3, 2/3]).values
+        filtered_env["RH_band"] = pd.cut(filtered_env["RH_out"], [-np.inf, *rh_q, np.inf], labels=["Dry", "Moderate", "Humid"]).astype(str)
+        filtered_env = filtered_env[filtered_env["RH_band"] == sel_hum_band]
+
+    col_e1, col_e2 = st.columns(2)
+    with col_e1:
+        st.markdown("##### Outdoor Temperature vs Appliances (Scatter Plot)")
+        # Sample 2000 points for snappy rendering
+        sample_env = filtered_env.sample(min(2000, len(filtered_env)), random_state=42)
+        fig_sc1 = px.scatter(
+            sample_env, x="T_out", y="Appliances", opacity=0.35,
+            title="T_out (°C) vs Appliances (Wh) [Pearson r = 0.0991]",
+            color_discrete_sequence=["#334155"]
+        )
+        fig_sc1.update_layout(xaxis_title="Outdoor Temperature (°C)", yaxis_title="Appliances (Wh)", height=320)
+        st.plotly_chart(fig_sc1, use_container_width=True)
+
+    with col_e2:
+        st.markdown("##### Outdoor Humidity vs Appliances (Scatter Plot)")
+        fig_sc2 = px.scatter(
+            sample_env, x="RH_out", y="Appliances", opacity=0.35,
+            title="RH_out (%) vs Appliances (Wh) [Pearson r = -0.1523]",
+            color_discrete_sequence=["#475569"]
+        )
+        fig_sc2.update_layout(xaxis_title="Outdoor Humidity (%)", yaxis_title="Appliances (Wh)", height=320)
+        st.plotly_chart(fig_sc2, use_container_width=True)
+
+    st.markdown("##### Indoor Thermal Gradient: Indoor Mean vs Outdoor Temperature")
+    daily_temps = df.set_index("date")[["T_indoor_mean", "T_out", "T_diff_in_out"]].resample("D").mean().reset_index()
+    fig_temp_line = go.Figure()
+    fig_temp_line.add_trace(go.Scatter(x=daily_temps["date"], y=daily_temps["T_indoor_mean"], name="Indoor Mean Temp (°C)", line=dict(color="#0F172A", width=2)))
+    fig_temp_line.add_trace(go.Scatter(x=daily_temps["date"], y=daily_temps["T_out"], name="Outdoor Temp T_out (°C)", line=dict(color="#94A3B8", dash="dash")))
+    fig_temp_line.add_trace(go.Scatter(x=daily_temps["date"], y=daily_temps["T_diff_in_out"], name="Thermal Gradient (Indoor - Outdoor)", line=dict(color="#F59E0B", width=1.5)))
+    fig_temp_line.update_layout(
+        title="Indoor vs Outdoor Temperature & Thermal Gradient Trend",
+        xaxis_title="Date", yaxis_title="Temperature (°C)", height=310, legend=dict(x=0.02, y=0.95)
+    )
+    st.plotly_chart(fig_temp_line, use_container_width=True)
+
+
+# ==============================================================================
+# PAGE 4: CORRELATION AND INSIGHTS (Chapter 13.5)
+# ==============================================================================
+elif page == "Page 4: Correlation & Insights":
+    st.markdown('<div class="main-title">📊 Page 4: Correlation and Insights</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sub-title">Empirical correlations, machine learning model benchmarks, and key viva takeaways</div>', unsafe_allow_html=True)
+
+    col_c1, col_c2 = st.columns([1, 1])
+
+    with col_c1:
+        st.markdown("##### Top Correlations with Appliances [Table 22]")
+        corr_df = load_table("corr_with_appliances.csv")
+        if corr_df is not None:
+            top_corr = corr_df.head(10).reset_index().rename(columns={"index": "Variable"})
+            fig_bar_corr = px.bar(
+                top_corr, x="Variable", y="Pearson", text_auto=".3f",
+                title="Top Predictors Correlated with Appliances",
+                color_discrete_sequence=["#334155"]
+            )
+            fig_bar_corr.update_layout(xaxis_title="Variable", yaxis_title="Pearson Correlation", height=320)
+            st.plotly_chart(fig_bar_corr, use_container_width=True)
+        else:
+            st.info("Correlation table loading...")
+
+    with col_c2:
+        st.markdown("##### Regression Model Benchmark [Tables 24 & 25]")
+        reg_comp = load_table("regression_model_comparison.csv")
+        if reg_comp is not None:
+            st.dataframe(reg_comp, use_container_width=True, hide_index=True)
+        
+        st.markdown("##### Decision Tree Benchmark [Tables 32 & 35]")
+        tree_comp = load_table("decision_tree_metrics.csv")
+        if tree_comp is not None:
+            st.dataframe(tree_comp, use_container_width=True, hide_index=True)
+
+    st.markdown("---")
+    st.markdown("##### Core Findings & Viva Discussion Takeaways (Chapter 14)")
+    
+    col_t1, col_t2, col_t3 = st.columns(3)
+    with col_t1:
+        st.markdown("""
+        **1. Lighting as Occupancy Proxy**  
+        - `lights` is the single strongest non-random predictor ($r = 0.1973$).  
+        - Simple regression: $\\text{Appliances} = 88.53 + 2.47 \\times \\text{lights}$.  
+        - Turning on lights directly marks human active presence in rooms.
+        """)
+    with col_t2:
+        st.markdown("""
+        **2. Diurnal Evening Peaks**  
+        - Consumption peaks sharply between 18:00 and 20:00 (reaching ~180 Wh).  
+        - Night standby load remains at baseline 50–60 Wh.  
+        - Driven by cooking, washing, entertainment, and household chores.
+        """)
+    with col_t3:
+        st.markdown("""
+        **3. Low R² & Seasonal Drift**  
+        - Multiple regression random $R^2 = 0.1705$; chronological $R^2 = 0.0989$.  
+        - Regression tree failed on future test ($R^2 = -1.3579$), proving seasonal shift from winter to spring.  
+        - High-power appliances draw sudden impulse bursts independent of slow ambient weather.
+        """)
+
+
+# ==============================================================================
+# ABOUT & LIMITATIONS TAB
+# ==============================================================================
+else:
+    st.markdown('<div class="main-title">ℹ️ About the Project, Methodology & Limitations</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sub-title">Specification Reference: SMART_RESIDENTIAL_ENERGY_CONSUMPTION_PROJECT_REPORT.docx</div>', unsafe_allow_html=True)
+
+    st.markdown("""
+    ### 1. Project Background
+    This project presents an empirical data analytics and data warehousing pipeline on the 
+    **Appliances Energy Prediction Dataset** (Candanedo et al., 2017).
+    - **Total Records:** 19,735 observations recorded at a 10-minute sampling cadence.
+    - **Monitoring Period:** 11 January 2016 to 27 May 2016 (137 consecutive days).
+    - **Monitored Variables:** 29 raw columns including appliance energy, lights, indoor room temperatures and humidities (T1-T9, RH_1-RH_9), and weather metrics.
+
+    ---
+    ### 2. Dimensional Star Schema (Chapter 6)
+    The dimensional model organizes 10-minute sensor telemetry into Kimball star schema tables inside **DuckDB** and exported as CSVs for Power BI:
+    1. **`Fact_Energy_Consumption`** (19,735 rows): Fact_ID, Date_Key, Time_Key, Environment_Key, Appliances_Wh, Lights_Wh, Avg_Indoor_Temp, Avg_Indoor_RH, Temp_Diff_In_Out.
+    2. **`Dim_Date`**: Full_Date, Day_No, Month_No, Month_Name, Day_Of_Week, Is_Weekend.
+    3. **`Dim_Time`**: Hour_No, Minute_No, Time_Of_Day (Night, Morning, Afternoon, Evening).
+    4. **`Dim_Environment`**: T_out_Band, RH_out_Band, Wind_Band, Press_Band, Visibility_Band.
+
+    ---
+    ### 3. Machine Learning Evaluation & Honest Limitations (Chapter 16)
+    - **Why is R² low-to-moderate (~0.10 - 0.20)?**  
+      High-power household appliances (electric kettles, washing machines, dishwashers) operate intermittently for short durations (10 to 45 minutes) based on human decision-making. Ambient environmental sensors change very slowly with high thermal inertia and cannot directly observe human intentions.
+    - **Why did the Regression Tree fail on chronological evaluation ($R^2 = -1.3579$)?**  
+      Decision trees partition feature space using orthogonal cuts based on training values. Because outdoor weather transitioned dramatically from January (freezing, 2°C) to May (warm, 25°C), the tree encountered unseen input spaces and predicted inaccurate step-function values. This demonstrates why time-based evaluation is scientifically essential.
+    - **Supplemental Modules:**  
+      Advanced explorations (Ridge/Lasso, scratch Gradient Descent, formal hypothesis inference tests, VIF screening, and peak demand cutoff analysis) are preserved in the `extras/` directory and labelled as supplementary research outside the main report text.
+    """)

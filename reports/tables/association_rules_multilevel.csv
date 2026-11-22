@@ -1,0 +1,24 @@
+Antecedent,Consequent,Support,Confidence,Lift
+Hour=18,Appliances=High,0.0264,0.633,2.9514
+Hour=19,Appliances=High,0.0252,0.6058,2.8245
+Hour=20,Appliances=High,0.0218,0.5243,2.4445
+Hour=04,Appliances=Low,0.0306,0.7336,1.9401
+Hour=04 AND Lights=Off,Appliances=Low,0.0299,0.7333,1.9393
+Hour=03 AND Lights=Off,Appliances=Low,0.0292,0.7231,1.9123
+Hour=03,Appliances=Low,0.03,0.7214,1.9079
+Hour=02,Appliances=Low,0.0299,0.719,1.9015
+Hour=02 AND Lights=Off,Appliances=Low,0.0287,0.7159,1.8934
+Hour=05 AND Lights=Off,Appliances=Low,0.0274,0.7008,1.8534
+Hour=05,Appliances=Low,0.0288,0.6922,1.8307
+Hour=01 AND Lights=Off,Appliances=Low,0.0263,0.6883,1.8204
+Hour=00 AND Lights=Off,Appliances=Low,0.0233,0.6805,1.7997
+Hour=01,Appliances=Low,0.028,0.6727,1.7792
+Hour=06 AND Lights=Off,Appliances=Low,0.0243,0.6438,1.7027
+Hour=00,Appliances=Low,0.0263,0.6326,1.6731
+Hour=06,Appliances=Low,0.0263,0.6314,1.6698
+Hour=21,Appliances=Medium,0.0266,0.6375,1.5647
+Hour=22,Appliances=Medium,0.0239,0.573,1.4065
+Hour=23,Appliances=Low,0.0211,0.5061,1.3385
+Hour=15,Appliances=Medium,0.0209,0.5012,1.2303
+Hour=16,Appliances=Medium,0.0206,0.4951,1.2154
+Hour=23,Appliances=Medium,0.02,0.4805,1.1795

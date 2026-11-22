@@ -1,0 +1,7 @@
+Step,Details,Rows Affected,Status
+Missing Values Audit,Scanned all 29 columns for NaN/null entries,0,PASSED (0 missing values)
+Duplicate Rows Audit,Checked full-row duplicates across all features,0,PASSED (0 duplicate rows)
+Timestamp Cadence Verification,Verified unbroken 10-minute time intervals across 137 days,0,PASSED (Continuous 10-min cadence without gaps)
+Synthetic Noise Removal,Dropped 'rv1' and 'rv2' (random uniform noise columns with zero physical causal signal),19735,REMOVED (2 columns dropped)
+Outlier Capping & Log Transformation,Calculated IQR fence (175.0 Wh) and P99 (576.6 Wh). Engineered 'Appliances_p99_capped' and 'Appliances_log1p',198,COMPLETED (Skew reduced from 3.38 to 0.38 via log1p)
+Feature Engineering,"Engineered calendar features, time_of_day, temp_band, cyclical sin/cos transforms, and high_usage binary target",19735,COMPLETED (Threshold = 100.0 Wh from training set)

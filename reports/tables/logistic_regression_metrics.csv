@@ -1,0 +1,2 @@
+Model,ROC-AUC Score,Precision,Recall,F1-Score,True Negatives,False Positives,False Negatives,True Positives
+Logistic Regression (high_usage > 100 Wh),0.792,0.3984,0.7018,0.5083,2230,835,235,553

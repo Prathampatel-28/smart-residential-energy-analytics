@@ -1,0 +1,6 @@
+month,month_name,records,mean_appliances_wh,total_kwh,mean_lights_wh,mean_indoor_temp_c
+1,January,2922,97.03,47.25,4.72,18.53
+2,February,4176,100.95,70.26,6.34,19.98
+3,March,4464,96.95,72.13,3.92,20.28
+4,April,4320,98.89,71.2,2.42,21.33
+5,May,3853,94.2,60.49,1.77,23.51

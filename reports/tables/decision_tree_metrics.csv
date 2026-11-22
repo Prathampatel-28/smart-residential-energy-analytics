@@ -1,0 +1,4 @@
+Model / Split,MAE (Wh),RMSE (Wh),R² Score
+Regression Tree - Random 80/20 Train,48.04,89.83,0.2413
+Regression Tree - Random 80/20 Test,48.36,89.5,0.1995
+Regression Tree - Chronological Test,92.76,139.8,-1.3579

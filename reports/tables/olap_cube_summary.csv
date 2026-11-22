@@ -1,0 +1,103 @@
+month_name,time_of_day,temp_band,reading_count,avg_appliances_wh,total_kwh,high_usage_rate_pct
+April,Afternoon (12:00-17:59),Cold (0-5°C),19,53.16,0.17,0.0
+April,Afternoon (12:00-17:59),Hot (>=15°C),165,113.03,3.11,17.0
+April,Afternoon (12:00-17:59),Mild (5-10°C),329,115.47,6.33,26.4
+April,Afternoon (12:00-17:59),Warm (10-15°C),567,148.85,14.07,37.6
+April,Evening (18:00-23:59),Cold (0-5°C),129,66.51,1.43,6.2
+April,Evening (18:00-23:59),Hot (>=15°C),68,138.53,1.57,60.3
+April,Evening (18:00-23:59),Mild (5-10°C),507,84.58,7.15,26.2
+April,Evening (18:00-23:59),Warm (10-15°C),376,124.07,7.77,42.8
+April,Morning (06:00-11:59),Cold (0-5°C),283,77.77,3.67,9.9
+April,Morning (06:00-11:59),Freezing (<0°C),8,70.0,0.09,0.0
+April,Morning (06:00-11:59),Hot (>=15°C),15,75.33,0.19,6.7
+April,Morning (06:00-11:59),Mild (5-10°C),558,120.48,11.2,24.7
+April,Morning (06:00-11:59),Warm (10-15°C),216,129.4,4.66,25.5
+April,Night (00:00-05:59),Cold (0-5°C),408,53.65,3.65,0.7
+April,Night (00:00-05:59),Freezing (<0°C),13,71.54,0.15,15.4
+April,Night (00:00-05:59),Hot (>=15°C),1,50.0,0.01,0.0
+April,Night (00:00-05:59),Mild (5-10°C),502,53.84,4.51,0.8
+April,Night (00:00-05:59),Warm (10-15°C),156,56.67,1.47,0.0
+February,Afternoon (12:00-17:59),Cold (0-5°C),277,113.68,5.25,32.5
+February,Afternoon (12:00-17:59),Mild (5-10°C),630,135.37,14.21,36.7
+February,Afternoon (12:00-17:59),Warm (10-15°C),137,164.89,3.77,48.9
+February,Evening (18:00-23:59),Cold (0-5°C),595,116.2,11.52,36.1
+February,Evening (18:00-23:59),Freezing (<0°C),63,70.32,0.74,15.9
+February,Evening (18:00-23:59),Mild (5-10°C),251,137.33,5.74,40.2
+February,Evening (18:00-23:59),Warm (10-15°C),135,118.96,2.68,25.2
+February,Morning (06:00-11:59),Cold (0-5°C),502,118.84,9.94,25.3
+February,Morning (06:00-11:59),Freezing (<0°C),138,75.22,1.73,8.7
+February,Morning (06:00-11:59),Mild (5-10°C),330,90.24,4.96,18.2
+February,Morning (06:00-11:59),Warm (10-15°C),74,100.41,1.24,18.9
+February,Night (00:00-05:59),Cold (0-5°C),524,50.55,4.41,0.0
+February,Night (00:00-05:59),Freezing (<0°C),153,49.48,1.26,0.0
+February,Night (00:00-05:59),Mild (5-10°C),225,44.98,1.69,0.0
+February,Night (00:00-05:59),Warm (10-15°C),142,46.9,1.11,0.0
+January,Afternoon (12:00-17:59),Cold (0-5°C),232,111.9,4.33,24.6
+January,Afternoon (12:00-17:59),Freezing (<0°C),69,70.58,0.81,7.2
+January,Afternoon (12:00-17:59),Mild (5-10°C),324,124.78,6.74,33.6
+January,Afternoon (12:00-17:59),Warm (10-15°C),101,43.86,0.74,2.0
+January,Evening (18:00-23:59),Cold (0-5°C),308,139.03,7.14,37.7
+January,Evening (18:00-23:59),Freezing (<0°C),137,204.96,4.68,55.5
+January,Evening (18:00-23:59),Mild (5-10°C),256,99.84,4.26,18.0
+January,Evening (18:00-23:59),Warm (10-15°C),55,120.36,1.1,38.2
+January,Morning (06:00-11:59),Cold (0-5°C),207,121.79,4.2,24.6
+January,Morning (06:00-11:59),Freezing (<0°C),171,77.84,2.22,10.5
+January,Morning (06:00-11:59),Mild (5-10°C),310,105.39,5.45,26.5
+January,Morning (06:00-11:59),Warm (10-15°C),32,38.75,0.21,0.0
+January,Night (00:00-05:59),Cold (0-5°C),252,43.41,1.82,0.0
+January,Night (00:00-05:59),Freezing (<0°C),178,41.52,1.23,0.0
+January,Night (00:00-05:59),Mild (5-10°C),263,47.26,2.07,2.3
+January,Night (00:00-05:59),Warm (10-15°C),27,57.41,0.26,7.4
+March,Afternoon (12:00-17:59),Cold (0-5°C),136,118.82,2.69,25.7
+March,Afternoon (12:00-17:59),Mild (5-10°C),737,121.85,14.97,30.7
+March,Afternoon (12:00-17:59),Warm (10-15°C),243,125.31,5.07,30.5
+March,Evening (18:00-23:59),Cold (0-5°C),406,101.13,6.84,28.1
+March,Evening (18:00-23:59),Mild (5-10°C),635,132.27,14.0,45.7
+March,Evening (18:00-23:59),Warm (10-15°C),75,148.67,1.86,72.0
+March,Morning (06:00-11:59),Cold (0-5°C),472,93.31,7.34,16.1
+March,Morning (06:00-11:59),Freezing (<0°C),125,57.44,1.2,4.8
+March,Morning (06:00-11:59),Mild (5-10°C),511,102.72,8.75,21.7
+March,Morning (06:00-11:59),Warm (10-15°C),8,238.75,0.32,62.5
+March,Night (00:00-05:59),Cold (0-5°C),626,46.76,4.88,0.0
+March,Night (00:00-05:59),Freezing (<0°C),99,46.46,0.77,0.0
+March,Night (00:00-05:59),Mild (5-10°C),386,53.06,3.41,0.0
+March,Night (00:00-05:59),Warm (10-15°C),5,44.0,0.04,0.0
+May,Afternoon (12:00-17:59),Hot (>=15°C),687,119.74,13.71,25.8
+May,Afternoon (12:00-17:59),Mild (5-10°C),3,300.0,0.15,100.0
+May,Afternoon (12:00-17:59),Warm (10-15°C),282,126.45,5.94,42.9
+May,Evening (18:00-23:59),Hot (>=15°C),435,107.52,7.8,37.2
+May,Evening (18:00-23:59),Mild (5-10°C),109,81.47,1.48,9.2
+May,Evening (18:00-23:59),Warm (10-15°C),393,89.29,5.85,29.5
+May,Morning (06:00-11:59),Cold (0-5°C),50,80.0,0.67,8.0
+May,Morning (06:00-11:59),Hot (>=15°C),274,143.8,6.57,32.1
+May,Morning (06:00-11:59),Mild (5-10°C),247,86.52,3.56,18.6
+May,Morning (06:00-11:59),Warm (10-15°C),401,88.75,5.93,14.5
+May,Night (00:00-05:59),Cold (0-5°C),130,52.85,1.15,1.5
+May,Night (00:00-05:59),Hot (>=15°C),88,55.0,0.81,0.0
+May,Night (00:00-05:59),Mild (5-10°C),334,53.62,2.99,0.0
+May,Night (00:00-05:59),Warm (10-15°C),420,55.74,3.9,0.2
+April,Afternoon (12:00-17:59),--- ALL TEMPS ---,1080,131.53,23.68,30.4
+April,Evening (18:00-23:59),--- ALL TEMPS ---,1080,99.56,17.92,31.8
+April,Morning (06:00-11:59),--- ALL TEMPS ---,1080,110.07,19.81,20.6
+April,Night (00:00-05:59),--- ALL TEMPS ---,1080,54.39,9.79,0.8
+February,Afternoon (12:00-17:59),--- ALL TEMPS ---,1044,133.49,23.23,37.2
+February,Evening (18:00-23:59),--- ALL TEMPS ---,1044,118.87,20.68,34.5
+February,Morning (06:00-11:59),--- ALL TEMPS ---,1044,102.73,17.88,20.4
+February,Night (00:00-05:59),--- ALL TEMPS ---,1044,48.7,8.47,0.0
+January,Afternoon (12:00-17:59),--- ALL TEMPS ---,726,104.26,12.62,23.8
+January,Evening (18:00-23:59),--- ALL TEMPS ---,756,136.35,17.18,34.3
+January,Morning (06:00-11:59),--- ALL TEMPS ---,720,100.6,12.07,21.0
+January,Night (00:00-05:59),--- ALL TEMPS ---,720,44.88,5.38,1.1
+March,Afternoon (12:00-17:59),--- ALL TEMPS ---,1116,122.23,22.74,30.0
+March,Evening (18:00-23:59),--- ALL TEMPS ---,1116,122.04,22.7,41.0
+March,Morning (06:00-11:59),--- ALL TEMPS ---,1116,94.64,17.6,17.7
+March,Night (00:00-05:59),--- ALL TEMPS ---,1116,48.9,9.09,0.0
+May,Afternoon (12:00-17:59),--- ALL TEMPS ---,972,122.24,19.8,31.0
+May,Evening (18:00-23:59),--- ALL TEMPS ---,937,96.84,15.12,30.7
+May,Morning (06:00-11:59),--- ALL TEMPS ---,972,103.25,16.73,20.2
+May,Night (00:00-05:59),--- ALL TEMPS ---,972,54.56,8.84,0.3
+--- ALL MONTHS ---,Afternoon (12:00-17:59),--- ALL TEMPS ---,4938,124.0,102.06,30.9
+--- ALL MONTHS ---,Evening (18:00-23:59),--- ALL TEMPS ---,4933,113.86,93.61,34.6
+--- ALL MONTHS ---,Morning (06:00-11:59),--- ALL TEMPS ---,4932,102.3,84.09,19.9
+--- ALL MONTHS ---,Night (00:00-05:59),--- ALL TEMPS ---,4932,50.59,41.58,0.4
+--- ALL MONTHS ---,--- ALL TIMES ---,--- ALL TEMPS ---,19735,97.69,321.33,21.4

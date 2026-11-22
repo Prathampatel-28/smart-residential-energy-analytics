@@ -1,0 +1,6 @@
+Split / Dataset,MAE (Wh),RMSE (Wh),R² Score
+Random 80/20 - Training,53.17,94.11,0.1673
+Random 80/20 - Testing,52.58,91.11,0.1705
+Chronological - Training (First 80%),54.26,95.51,0.1756
+Chronological - Testing (Last 20%),52.47,86.42,0.0989
+Chronological Baseline (Mean Only),52.68,91.05,-0.0003

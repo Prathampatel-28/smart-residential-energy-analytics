@@ -1,0 +1,7 @@
+Check Name,Expected,Observed,Status,Details
+Row Count Reconciliation,19735,19735,PASSED,"Fact_Energy_Consumption matches raw CSV row count (19,735)"
+Primary Key Uniqueness (Fact_ID),0,0,PASSED,Zero duplicate Fact_IDs detected
+Null Foreign Key Check,0,0,PASSED,All foreign keys populated with valid integer keys
+Referential Integrity (Dim_Date),0,0,PASSED,Every fact Date_Key resolves to Dim_Date
+Referential Integrity (Dim_Time),0,0,PASSED,Every fact Time_Key resolves to Dim_Time
+Referential Integrity (Dim_Environment),0,0,PASSED,Every fact Environment_Key resolves to Dim_Environment
