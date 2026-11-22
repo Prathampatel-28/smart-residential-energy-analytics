@@ -1,4 +1,4 @@
 Algorithm,Runtime (Seconds),Frequent Itemsets Found,Matches Expected
-Apriori (Custom Level-wise),0.0678,938,YES (938 itemsets)
-mlxtend Apriori,0.0761,938,YES (938 itemsets)
-mlxtend FP-Growth,0.1042,938,YES (938 itemsets)
+Apriori (Custom Level-wise),0.065,938,YES (938 itemsets)
+mlxtend Apriori,0.0707,938,YES (938 itemsets)
+mlxtend FP-Growth,0.0977,938,YES (938 itemsets)

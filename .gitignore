@@ -2,17 +2,32 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyc
 
 # Caches and logs
 .mpl_cache/
 *.log
 .pytest_cache/
+.ipynb_checkpoints/
 
 # Environments
 .venv/
 venv/
 env/
+ENV/
+
+# Secrets and environment configs
+.env
+*.env
 
 # OS generated files
 .DS_Store
 Thumbs.db
+
+# Databases and large binary warehouse files
+*.duckdb
+*.duckdb.wal
+
+# Word documents and reports (contains student names and PRNs)
+*.docx
+*.doc

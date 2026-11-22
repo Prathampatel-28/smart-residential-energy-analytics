@@ -283,11 +283,12 @@ def run_verification():
     for msg in messages:
         print(msg)
 
+    total_checks = len(messages)
     print("=" * 85)
     if all_passed:
-        print(">>> ALL 28 VERIFICATION CHECKS PASSED WITH 100% SUCCESS RATE! <<<")
+        print(f">>> ALL {total_checks} VERIFICATION CHECKS PASSED WITH 100% SUCCESS RATE! <<<")
     else:
-        print(f">>> {len(discrepancies)} CHECKS FAILED. Writing discrepancies to reports/DISCREPANCIES.md <<<")
+        print(f">>> {len(discrepancies)} OF {total_checks} CHECKS FAILED. Writing discrepancies to reports/DISCREPANCIES.md <<<")
         disc_lines = ["# Discrepancies Between Codebase and Report Specification\n\n"]
         disc_lines.append("| Metric Name | Expected Value | Actual Value | Discrepancy |\n")
         disc_lines.append("| :--- | :--- | :--- | :--- |\n")
